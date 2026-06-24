@@ -9,29 +9,37 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <style>
   :root {
-    --primary: #6b3fa0; --primary-dark: #4a2a7a; --accent: #f5a623;
-    --light: #fdfaff; --dark: #1a0d2e;
-    --gradient: linear-gradient(135deg, #6b3fa0 0%, #9c5fd6 50%, #f5a623 100%);
+    --primary: #E8651A;
+    --primary-dark: #C04E0C;
+    --primary-light: #F47C3C;
+    --accent: #FF9F45;
+    --accent2: #FFD166;
+    --light: #FFF8F3;
+    --dark: #2D1506;
+    --gradient: linear-gradient(135deg, #E8651A 0%, #F47C3C 50%, #FFD166 100%);
+    --gradient-soft: linear-gradient(135deg, #FFF0E5 0%, #FFF8EC 100%);
+    --text-muted: #8C5A3C;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: 'Poppins', sans-serif; background: var(--light); color: #333; overflow-x: hidden; cursor: none; }
-  
-  .cursor-dot { 
-    width: 18px; height: 18px; 
-    background: rgba(138, 80, 220, 0.5);
-    border: 2px solid #9c5fd6;
-    border-radius: 50%; 
-    position: fixed; 
-    pointer-events: none; 
-    z-index: 9999; 
+
+  /* ── Custom Cursor ── */
+  .cursor-dot {
+    width: 18px; height: 18px;
+    background: rgba(232, 101, 26, 0.45);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 999999;
     transform: translate(-50%, -50%);
     transition: transform 0.1s ease;
-    box-shadow: 0 0 8px 2px rgba(138, 80, 220, 0.5);
+    box-shadow: 0 0 8px 2px rgba(232,101,26,0.4);
   }
-
   a, button, input, select, textarea, .service-card, .doctor-card { cursor: none; }
-  
+
+  /* ── Top Bar ── */
   .top-bar { background: var(--dark); color: #fff; padding: 10px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
   .top-bar .contact-items { display: flex; gap: 25px; }
   .top-bar .contact-items a { color: #fff; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
@@ -39,13 +47,15 @@
   .top-bar .contact-items i { color: var(--accent); }
   .top-bar .top-social a { color: #fff; margin-left: 12px; transition: 0.3s; }
   .top-bar .top-social a:hover { color: var(--accent); }
-  
+
+  /* ── Preloader ── */
   .preloader { position: fixed; inset: 0; background: var(--gradient); display: flex; justify-content: center; align-items: center; z-index: 10000; transition: 0.8s; }
   .preloader.hide { opacity: 0; visibility: hidden; }
   .loader { width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 1s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
-  
-  nav { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); padding: 18px 60px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; transition: 0.4s; box-shadow: 0 2px 30px rgba(107,63,160,0.08); }
+
+  /* ── Nav ── */
+  nav { background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); padding: 18px 60px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; transition: 0.4s; box-shadow: 0 2px 30px rgba(232,101,26,0.09); }
   nav.scrolled { padding: 12px 60px; }
   .logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   nav ul { display: flex; list-style: none; gap: 35px; }
@@ -54,45 +64,50 @@
   nav ul li a:hover::after { width: 100%; }
   nav ul li a:hover { color: var(--primary); }
   .nav-cta { background: var(--gradient); color: #fff !important; padding: 10px 25px; border-radius: 30px; }
-  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(107,63,160,0.4); }
-  
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 60px 60px; background: linear-gradient(135deg, #f3e8ff 0%, #fff5e1 100%); position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(245,166,35,0.2), transparent); border-radius: 50%; animation: float 8s ease-in-out infinite; }
-  .hero::after { content: ''; position: absolute; bottom: -150px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(107,63,160,0.2), transparent); border-radius: 50%; animation: float 10s ease-in-out infinite reverse; }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(232,101,26,0.4); }
+  .nav-cta::after { display: none !important; }
+
+  /* ── Hero ── */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 60px 60px; background: var(--gradient-soft); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(255,209,102,0.25), transparent); border-radius: 50%; animation: float 8s ease-in-out infinite; }
+  .hero::after { content: ''; position: absolute; bottom: -150px; left: -100px; width: 420px; height: 420px; background: radial-gradient(circle, rgba(232,101,26,0.15), transparent); border-radius: 50%; animation: float 10s ease-in-out infinite reverse; }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
   .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
-  .hero-text .badge { display: inline-block; padding: 8px 20px; background: rgba(107,63,160,0.1); color: var(--primary); border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
+  .hero-text .badge { display: inline-block; padding: 8px 20px; background: rgba(232,101,26,0.1); color: var(--primary); border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(232,101,26,0.2); }
   .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; line-height: 1.1; color: var(--dark); margin-bottom: 25px; }
   .hero-text h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero-text p { font-size: 1.15rem; color: #666; margin-bottom: 35px; line-height: 1.8; }
+  .hero-text p { font-size: 1.15rem; color: #7a4a2a; margin-bottom: 35px; line-height: 1.8; }
   .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.4s; border: none; font-size: 1rem; }
-  .btn-primary { background: var(--gradient); color: #fff; box-shadow: 0 10px 30px rgba(107,63,160,0.3); }
-  .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(107,63,160,0.5); }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.4s; border: none; font-size: 1rem; font-family: 'Poppins', sans-serif; }
+  .btn-primary { background: var(--gradient); color: #fff; box-shadow: 0 10px 30px rgba(232,101,26,0.35); }
+  .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(232,101,26,0.55); }
   .btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 10px 30px rgba(37,211,102,0.3); }
   .btn-whatsapp:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(37,211,102,0.5); }
-  .btn-call { background: var(--accent); color: #fff; box-shadow: 0 10px 30px rgba(245,166,35,0.3); }
-  .btn-call:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(245,166,35,0.5); }
-  
+  .btn-call { background: linear-gradient(135deg,#FF9F45,#FFD166); color: #fff; box-shadow: 0 10px 30px rgba(255,159,69,0.35); }
+  .btn-call:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255,159,69,0.55); }
+
   .hero-image { position: relative; }
-  .hero-image img { width: 100%; border-radius: 30px; box-shadow: 0 30px 80px rgba(107,63,160,0.3); }
-  .hero-image .floating-card { position: absolute; background: #fff; padding: 18px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 15px; animation: float 4s ease-in-out infinite; }
+  .hero-image img { width: 100%; border-radius: 30px; box-shadow: 0 30px 80px rgba(232,101,26,0.25); }
+  .hero-image .floating-card { position: absolute; background: #fff; padding: 18px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.12); display: flex; align-items: center; gap: 15px; animation: float 4s ease-in-out infinite; }
   .floating-card.card1 { top: 30px; left: -30px; }
   .floating-card.card2 { bottom: 40px; right: -30px; animation-delay: 2s; }
   .floating-card img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; box-shadow: none; }
   .floating-card h4 { font-size: 1rem; color: var(--dark); }
   .floating-card p { font-size: 0.8rem; color: #888; }
-  
+
+  /* ── Stats ── */
   .stats { padding: 60px; background: var(--gradient); color: #fff; }
   .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: center; }
   .stat h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; }
-  
+
+  /* ── Section base ── */
   section { padding: 100px 60px; }
   .section-title { text-align: center; margin-bottom: 70px; }
-  .section-title .small { color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; }
+  .section-title .small { color: var(--primary); font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; }
   .section-title h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--dark); margin-top: 10px; }
   .section-title h2 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  
+
+  /* ── About ── */
   .about { background: #fff; }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1300px; margin: 0 auto; }
   .about-images { position: relative; }
@@ -100,81 +115,91 @@
   .about-images .img1 { width: 75%; }
   .about-images .img2 { position: absolute; bottom: -40px; right: 0; width: 55%; border: 8px solid #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
   .about-text h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--dark); margin-bottom: 20px; }
-  .about-text p { color: #666; margin-bottom: 25px; line-height: 1.9; }
+  .about-text p { color: #6b4226; margin-bottom: 25px; line-height: 1.9; }
   .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 30px; }
   .about-feature { display: flex; gap: 15px; align-items: center; }
   .about-feature img { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; }
   .about-feature h4 { color: var(--dark); margin-bottom: 5px; font-size: 1rem; }
-  .about-feature p { font-size: 0.85rem; color: #888; }
-  
-  .services { background: linear-gradient(180deg, #f9f4ff 0%, #fff 100%); }
+  .about-feature p { font-size: 0.85rem; color: #9a6040; }
+
+  /* ── Services ── */
+  .services { background: linear-gradient(180deg, #FFF4EC 0%, #fff 100%); }
   .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; max-width: 1300px; margin: 0 auto; }
-  .service-card { background: #fff; border-radius: 20px; box-shadow: 0 10px 40px rgba(107,63,160,0.08); transition: 0.5s; overflow: hidden; }
-  .service-card:hover { transform: translateY(-15px); box-shadow: 0 25px 60px rgba(107,63,160,0.25); }
+  .service-card { background: #fff; border-radius: 20px; box-shadow: 0 10px 40px rgba(232,101,26,0.08); transition: 0.5s; overflow: hidden; }
+  .service-card:hover { transform: translateY(-15px); box-shadow: 0 25px 60px rgba(232,101,26,0.22); }
   .service-img-wrap { width: 100%; height: 200px; overflow: hidden; position: relative; }
   .service-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
   .service-card:hover .service-img-wrap img { transform: scale(1.2); }
-  .service-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(107,63,160,0.4)); }
+  .service-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(232,101,26,0.35)); }
   .service-content { padding: 25px; text-align: center; }
   .service-content h3 { color: var(--dark); margin-bottom: 10px; font-size: 1.2rem; }
-  .service-content p { color: #777; font-size: 0.9rem; line-height: 1.6; }
-  
+  .service-content p { color: #7a4a2a; font-size: 0.9rem; line-height: 1.6; }
+
+  /* ── Doctors ── */
   .doctors { background: #fff; }
   .doctors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
   .doctor-card { background: #fff; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.08); transition: 0.5s; }
-  .doctor-card:hover { transform: translateY(-10px); }
+  .doctor-card:hover { transform: translateY(-10px); box-shadow: 0 25px 60px rgba(232,101,26,0.18); }
   .doctor-img-wrap { height: 350px; overflow: hidden; position: relative; }
   .doctor-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.6s ease; }
   .doctor-card:hover .doctor-img-wrap img { transform: scale(1.15); }
+  .doctor-img-wrap::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(transparent, rgba(232,101,26,0.15)); }
   .doctor-info { padding: 25px; text-align: center; }
   .doctor-info h3 { color: var(--dark); margin-bottom: 5px; }
   .doctor-info p { color: var(--primary); font-weight: 500; }
-  
+
+  /* ── Why Us ── */
   .why-us { background: var(--dark); color: #fff; }
   .why-us .section-title h2 { color: #fff; }
+  .why-us .section-title .small { color: var(--accent); }
   .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
-  .why-card { background: rgba(255,255,255,0.05); border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); transition: 0.4s; overflow: hidden; }
-  .why-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-10px); }
+  .why-card { background: rgba(255,255,255,0.05); border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,159,69,0.2); transition: 0.4s; overflow: hidden; }
+  .why-card:hover { background: rgba(232,101,26,0.12); transform: translateY(-10px); border-color: rgba(255,159,69,0.5); }
   .why-img-wrap { height: 200px; overflow: hidden; }
   .why-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
   .why-card:hover .why-img-wrap img { transform: scale(1.15); }
   .why-content { padding: 30px; }
   .why-content h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--accent); }
   .why-content p { opacity: 0.85; line-height: 1.8; font-size: 0.95rem; }
-  
-  .testimonials { background: linear-gradient(135deg, #fff5e1, #f3e8ff); }
+
+  /* ── Testimonials ── */
+  .testimonials { background: linear-gradient(135deg, #FFF4E5, #FFF9EC); }
   .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
-  .testi-card { background: #fff; padding: 35px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+  .testi-card { background: #fff; padding: 35px; border-radius: 20px; box-shadow: 0 15px 40px rgba(232,101,26,0.08); border-top: 4px solid transparent; border-image: var(--gradient) 1; transition: 0.4s; }
+  .testi-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(232,101,26,0.15); }
   .testi-card .stars { color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; }
-  .testi-card p { color: #555; line-height: 1.8; margin-bottom: 25px; font-style: italic; }
+  .testi-card p { color: #5a3820; line-height: 1.8; margin-bottom: 25px; font-style: italic; }
   .testi-user { display: flex; align-items: center; gap: 15px; }
-  .testi-user img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; }
+  .testi-user img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
   .testi-user h4 { color: var(--dark); }
   .testi-user span { color: #888; font-size: 0.85rem; }
-  
+
+  /* ── Booking ── */
   .booking { background: #fff; }
   .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
-  .booking-image img { width: 100%; border-radius: 25px; }
-  .booking-form { background: linear-gradient(135deg, #fff, #f9f4ff); padding: 45px; border-radius: 25px; box-shadow: 0 20px 60px rgba(107,63,160,0.15); }
+  .booking-image img { width: 100%; border-radius: 25px; box-shadow: 0 20px 60px rgba(232,101,26,0.18); }
+  .booking-form { background: linear-gradient(135deg, #fff, #FFF4EC); padding: 45px; border-radius: 25px; box-shadow: 0 20px 60px rgba(232,101,26,0.12); }
   .booking-form h3 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--dark); margin-bottom: 25px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
   .form-group { margin-bottom: 18px; }
   .form-group label { display: block; margin-bottom: 6px; color: var(--dark); font-size: 0.9rem; font-weight: 500; }
-  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 13px 18px; border: 2px solid #eee; border-radius: 12px; font-size: 0.95rem; font-family: inherit; transition: 0.3s; background: #fff; }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(107,63,160,0.1); }
-  
-  .contact-section { background: linear-gradient(135deg, #f3e8ff, #fff5e1); }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 13px 18px; border: 2px solid #f0ddd0; border-radius: 12px; font-size: 0.95rem; font-family: inherit; transition: 0.3s; background: #fff; color: #333; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(232,101,26,0.1); }
+
+  /* ── Contact ── */
+  .contact-section { background: linear-gradient(135deg, #FFF4E5, #FFF9EC); }
   .contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; max-width: 1300px; margin: 0 auto; }
   .contact-card { background: #fff; padding: 40px 25px; border-radius: 20px; text-align: center; transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; }
-  .contact-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(107,63,160,0.15); }
-  .contact-card .icon-img { width: 80px; height: 80px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; }
+  .contact-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(232,101,26,0.15); }
+  .contact-card .icon-img { width: 80px; height: 80px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent); }
   .contact-card .icon-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
   .contact-card:hover .icon-img img { transform: scale(1.2); }
   .contact-card h4 { color: var(--dark); margin-bottom: 10px; font-size: 1.2rem; }
-  .contact-card p { color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; }
+  .contact-card p { color: #6b4226; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; }
   .contact-card a { color: var(--primary); text-decoration: none; font-weight: 600; word-break: break-word; }
-  .contact-card a:hover { color: var(--accent); }
-  
+  .contact-card a:hover { color: var(--primary-dark); }
+
+  /* ── Footer ── */
   footer { background: var(--dark); color: #fff; padding: 60px 60px 25px; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1300px; margin: 0 auto 40px; }
   .footer-col h4 { font-family: 'Playfair Display', serif; margin-bottom: 20px; font-size: 1.3rem; color: var(--accent); }
@@ -183,18 +208,26 @@
   .social-links { display: flex; gap: 12px; margin-top: 15px; }
   .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
   .social-links a:hover { background: var(--gradient); transform: translateY(-3px); }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; text-align: center; opacity: 0.7; font-size: 0.9rem; }
-  
+  .footer-bottom { border-top: 1px solid rgba(255,159,69,0.2); padding-top: 25px; text-align: center; opacity: 0.7; font-size: 0.9rem; }
+
+  /* ── Float WA ── */
   .float-wa { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: #25D366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 10px 30px rgba(37,211,102,0.4); z-index: 999; animation: pulse 2s infinite; text-decoration: none; }
   @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 50% { box-shadow: 0 0 0 20px rgba(37,211,102,0); } }
-  
-  .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 10001; }
+
+  /* ── Modal ── */
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 99999; cursor: auto; }
   .modal.active { display: flex; }
-  .modal-content { background: #fff; padding: 40px; border-radius: 20px; max-width: 450px; text-align: center; }
+  .modal-content { background: #fff; padding: 40px; border-radius: 20px; max-width: 450px; text-align: center; cursor: auto; }
   .modal-content i { font-size: 4rem; color: #25D366; margin-bottom: 20px; }
   .modal-content h3 { font-family: 'Playfair Display', serif; color: var(--dark); margin-bottom: 15px; }
   .modal-content p { color: #666; margin-bottom: 25px; line-height: 1.7; }
-  
+  .modal-content .btn { cursor: pointer; }
+
+  /* ── Orange accent stripe on service cards hover ── */
+  .service-card::before { content: ''; display: block; height: 4px; background: var(--gradient); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  /* ── Responsive ── */
   @media(max-width: 968px) {
     body { cursor: auto; } .cursor-dot { display: none; }
     a, button, input, select, textarea, .service-card, .doctor-card { cursor: auto; }
@@ -208,6 +241,7 @@
     .footer-grid { grid-template-columns: 1fr; }
     section { padding: 60px 20px; }
     .section-title h2 { font-size: 2rem; }
+    .stats { padding: 40px 20px; }
   }
   @media(max-width: 600px) {
     .stats-grid, .services-grid, .doctors-grid, .why-grid, .testi-grid, .contact-grid, .form-row { grid-template-columns: 1fr; }
@@ -217,7 +251,6 @@
 <body>
 
 <div class="cursor-dot" id="cursorDot"></div>
-
 <div class="preloader" id="preloader"><div class="loader"></div></div>
 
 <div class="top-bar">
@@ -234,7 +267,7 @@
 </div>
 
 <nav id="navbar">
-  <div class="logo">α Alpha</div>
+  <div class="logo">α Alpha Clinic</div>
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -245,11 +278,12 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-grid">
     <div class="hero-text">
       <span class="badge">🏥 #1 Trusted Clinic in Kodambakkam</span>
-      <h1>Premium <span>Healthcare</span> For Your Family 💜</h1>
+      <h1>Your Health, <span>Our Priority</span> 🧡</h1>
       <p>Experience world-class medical care at Alpha Clinic — combining cutting-edge technology with compassionate service. Located conveniently at Kodambakkam Bus Stop, Chennai.</p>
       <div class="hero-buttons">
         <a href="#book" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a>
@@ -271,6 +305,7 @@
   </div>
 </section>
 
+<!-- STATS -->
 <section class="stats">
   <div class="stats-grid">
     <div class="stat"><h3 class="counter" data-target="15">0</h3><p>Years of Excellence</p></div>
@@ -280,6 +315,7 @@
   </div>
 </section>
 
+<!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-grid">
     <div class="about-images" data-aos="fade-right">
@@ -287,7 +323,7 @@
       <img src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=400" class="img2" alt="">
     </div>
     <div class="about-text" data-aos="fade-left">
-      <span style="color:var(--accent); font-weight:600; letter-spacing:3px;">ABOUT US</span>
+      <span style="color:var(--primary); font-weight:600; letter-spacing:3px; font-size:0.9rem;">ABOUT US</span>
       <h3>Compassionate Care, <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Modern Medicine</span></h3>
       <p>At Alpha Clinic, we redefine healthcare with a perfect blend of advanced medical technology and genuine compassion. Located at the heart of Kodambakkam, we serve families across Chennai with personalized treatment plans.</p>
       <div class="about-features">
@@ -300,6 +336,7 @@
   </div>
 </section>
 
+<!-- SERVICES -->
 <section class="services" id="services">
   <div class="section-title" data-aos="fade-up">
     <span class="small">OUR SERVICES</span>
@@ -317,6 +354,7 @@
   </div>
 </section>
 
+<!-- DOCTORS -->
 <section class="doctors" id="doctors">
   <div class="section-title" data-aos="fade-up">
     <span class="small">OUR TEAM</span>
@@ -329,10 +367,11 @@
   </div>
 </section>
 
+<!-- WHY US -->
 <section class="why-us">
   <div class="section-title" data-aos="fade-up">
     <span class="small" style="color:var(--accent);">WHY CHOOSE US</span>
-    <h2>Excellence in <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Every Step</span></h2>
+    <h2 style="color:#fff;">Excellence in <span>Every Step</span></h2>
   </div>
   <div class="why-grid">
     <div class="why-card" data-aos="zoom-in"><div class="why-img-wrap"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500" alt=""></div><div class="why-content"><h3>Expert Doctors</h3><p>Highly qualified specialists with decades of experience treating thousands of patients.</p></div></div>
@@ -341,6 +380,7 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="section-title" data-aos="fade-up">
     <span class="small">TESTIMONIALS</span>
@@ -353,15 +393,15 @@
   </div>
 </section>
 
+<!-- BOOKING -->
 <section class="booking" id="book">
   <div class="booking-grid">
     <div class="booking-image" data-aos="fade-right">
       <img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=700" alt="">
     </div>
     <div class="booking-form" data-aos="fade-left">
-      <span style="color:var(--accent); font-weight:600; letter-spacing:3px;">APPOINTMENT</span>
+      <span style="color:var(--primary); font-weight:600; letter-spacing:3px; font-size:0.9rem;">APPOINTMENT</span>
       <h3>Book Your Visit Today</h3>
-      
       <form id="bookingForm">
         <div class="form-row">
           <div class="form-group"><label>Full Name *</label><input type="text" name="name" placeholder="John Doe" required></div>
@@ -400,7 +440,6 @@
           </div>
         </div>
         <div class="form-group"><label>Symptoms / Reason</label><textarea name="symptoms" placeholder="Describe symptoms..." rows="3"></textarea></div>
-        
         <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
           <i class="fas fa-paper-plane"></i> Submit Appointment
         </button>
@@ -409,6 +448,7 @@
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="section-title" data-aos="fade-up">
     <span class="small">GET IN TOUCH</span>
@@ -442,6 +482,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
@@ -478,12 +519,31 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
+<script type="module">
+  // ============================================================
+  //  FIREBASE INITIALIZATION  (modular SDK v10 via ESM CDN)
+  // ============================================================
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyARAcmHikC3gAYtYxky-vs4-KMPa2neBM0",
+    authDomain: "clinic-d3fa6.firebaseapp.com",
+    projectId: "clinic-d3fa6",
+    storageBucket: "clinic-d3fa6.firebasestorage.app",
+    messagingSenderId: "886233571323",
+    appId: "1:886233571323:web:b33eb67b3e7e31a968755e",
+    measurementId: "G-YD7F71HJKB"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
   AOS.init({ duration: 1000, once: true });
-  
+
   window.addEventListener('load', () => setTimeout(() => document.getElementById('preloader').classList.add('hide'), 500));
   window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
-  
+
   const cursorDot = document.getElementById('cursorDot');
   document.addEventListener('mousemove', (e) => {
     cursorDot.style.left = e.clientX + 'px';
@@ -491,7 +551,7 @@
   });
   document.addEventListener('mouseleave', () => { cursorDot.style.opacity = '0'; });
   document.addEventListener('mouseenter', () => { cursorDot.style.opacity = '1'; });
-  
+
   // Counter animation
   const counters = document.querySelectorAll('.counter');
   const animateCounter = (counter) => {
@@ -508,9 +568,9 @@
     entries.forEach(entry => { if (entry.isIntersecting) { animateCounter(entry.target); observer.unobserve(entry.target); } });
   });
   counters.forEach(c => observer.observe(c));
-  
-  // ✅ FIXED FORM - Saves to localStorage AND sends WhatsApp
-  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+
+  // Booking Form — pushes to Firebase Firestore (admin panel receives in real-time)
+  document.getElementById('bookingForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const form = this;
     const formData = new FormData(form);
@@ -518,8 +578,7 @@
     const originalText = btn.innerHTML;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     btn.disabled = true;
-    
-    // ⭐ SAVE BOOKING TO LOCALSTORAGE (Admin panel reads from here)
+
     const booking = {
       id: Date.now(),
       timestamp: new Date().toLocaleString('en-IN'),
@@ -536,26 +595,28 @@
       history: '',
       status: 'Pending'
     };
-    
-    const existingBookings = JSON.parse(localStorage.getItem('alphaClinicBookings') || '[]');
-    existingBookings.push(booking);
-    localStorage.setItem('alphaClinicBookings', JSON.stringify(existingBookings));
-    
-    // Send WhatsApp notification to clinic
-    const waMsg = `*🏥 NEW APPOINTMENT - ALPHA CLINIC*%0A%0A` +
-      `*Name:* ${booking.name}%0A*Age:* ${booking.age}%0A` +
-      `*Phone:* ${booking.phone}%0A*Email:* ${booking.email}%0A` +
-      `*Service:* ${booking.service}%0A*Doctor:* ${booking.doctor}%0A` +
-      `*Date:* ${booking.date}%0A*Time:* ${booking.time}%0A` +
-      `*Symptoms:* ${booking.symptoms}`;
-    
-    setTimeout(() => {
+
+    try {
+      // Push to Firebase Firestore — appears in admin dashboard instantly
+      await addDoc(collection(db, 'bookings'), booking);
+
+      const waMsg = `*🏥 NEW APPOINTMENT - ALPHA CLINIC*%0A%0A` +
+        `*Name:* ${booking.name}%0A*Age:* ${booking.age}%0A` +
+        `*Phone:* ${booking.phone}%0A*Email:* ${booking.email}%0A` +
+        `*Service:* ${booking.service}%0A*Doctor:* ${booking.doctor}%0A` +
+        `*Date:* ${booking.date}%0A*Time:* ${booking.time}%0A` +
+        `*Symptoms:* ${booking.symptoms}`;
+
       window.open(`https://wa.me/919092543740?text=${waMsg}`, '_blank');
       document.getElementById('successModal').classList.add('active');
       form.reset();
+    } catch (err) {
+      console.error('Booking submission error:', err);
+      alert('Sorry, there was an error submitting your booking. Please call us at 9092543740.');
+    } finally {
       btn.innerHTML = originalText;
       btn.disabled = false;
-    }, 800);
+    }
   });
 </script>
 
