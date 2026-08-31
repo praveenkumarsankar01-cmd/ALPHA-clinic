@@ -1,624 +1,731 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alpha Clinic | Premium Healthcare in Kodambakkam, Chennai</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Alpha Clinic | Multi-Speciality &amp; Dental Care in Kodambakkam, Chennai</title>
+<meta name="description" content="Alpha Clinic, Kodambakkam — a multi-speciality clinic in Chennai offering dental, fertility, maternity, paediatric, women's health, general medicine and diagnostic care. Book online or call +91 90925 43740.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-<style>
-  :root {
-    --primary: #E8651A;
-    --primary-dark: #C04E0C;
-    --primary-light: #F47C3C;
-    --accent: #FF9F45;
-    --accent2: #FFD166;
-    --light: #FFF8F3;
-    --dark: #2D1506;
-    --gradient: linear-gradient(135deg, #E8651A 0%, #F47C3C 50%, #FFD166 100%);
-    --gradient-soft: linear-gradient(135deg, #FFF0E5 0%, #FFF8EC 100%);
-    --text-muted: #8C5A3C;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Poppins', sans-serif; background: var(--light); color: #333; overflow-x: hidden; cursor: none; }
-
-  /* ── Custom Cursor ── */
-  .cursor-dot {
-    width: 18px; height: 18px;
-    background: rgba(232, 101, 26, 0.45);
-    border: 2px solid var(--primary);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 999999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease;
-    box-shadow: 0 0 8px 2px rgba(232,101,26,0.4);
-  }
-  a, button, input, select, textarea, .service-card, .doctor-card { cursor: none; }
-
-  /* ── Top Bar ── */
-  .top-bar { background: var(--dark); color: #fff; padding: 10px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
-  .top-bar .contact-items { display: flex; gap: 25px; }
-  .top-bar .contact-items a { color: #fff; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
-  .top-bar .contact-items a:hover { color: var(--accent); }
-  .top-bar .contact-items i { color: var(--accent); }
-  .top-bar .top-social a { color: #fff; margin-left: 12px; transition: 0.3s; }
-  .top-bar .top-social a:hover { color: var(--accent); }
-
-  /* ── Preloader ── */
-  .preloader { position: fixed; inset: 0; background: var(--gradient); display: flex; justify-content: center; align-items: center; z-index: 10000; transition: 0.8s; }
-  .preloader.hide { opacity: 0; visibility: hidden; }
-  .loader { width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 1s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* ── Nav ── */
-  nav { background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); padding: 18px 60px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; transition: 0.4s; box-shadow: 0 2px 30px rgba(232,101,26,0.09); }
-  nav.scrolled { padding: 12px 60px; }
-  .logo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  nav ul { display: flex; list-style: none; gap: 35px; }
-  nav ul li a { text-decoration: none; color: #333; font-weight: 500; position: relative; transition: 0.3s; font-size: 0.95rem; }
-  nav ul li a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--gradient); transition: 0.4s; }
-  nav ul li a:hover::after { width: 100%; }
-  nav ul li a:hover { color: var(--primary); }
-  .nav-cta { background: var(--gradient); color: #fff !important; padding: 10px 25px; border-radius: 30px; }
-  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(232,101,26,0.4); }
-  .nav-cta::after { display: none !important; }
-
-  /* ── Hero ── */
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 60px 60px; background: var(--gradient-soft); position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 520px; height: 520px; background: radial-gradient(circle, rgba(255,209,102,0.25), transparent); border-radius: 50%; animation: float 8s ease-in-out infinite; }
-  .hero::after { content: ''; position: absolute; bottom: -150px; left: -100px; width: 420px; height: 420px; background: radial-gradient(circle, rgba(232,101,26,0.15), transparent); border-radius: 50%; animation: float 10s ease-in-out infinite reverse; }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
-  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
-  .hero-text .badge { display: inline-block; padding: 8px 20px; background: rgba(232,101,26,0.1); color: var(--primary); border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(232,101,26,0.2); }
-  .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; line-height: 1.1; color: var(--dark); margin-bottom: 25px; }
-  .hero-text h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero-text p { font-size: 1.15rem; color: #7a4a2a; margin-bottom: 35px; line-height: 1.8; }
-  .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.4s; border: none; font-size: 1rem; font-family: 'Poppins', sans-serif; }
-  .btn-primary { background: var(--gradient); color: #fff; box-shadow: 0 10px 30px rgba(232,101,26,0.35); }
-  .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(232,101,26,0.55); }
-  .btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 10px 30px rgba(37,211,102,0.3); }
-  .btn-whatsapp:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(37,211,102,0.5); }
-  .btn-call { background: linear-gradient(135deg,#FF9F45,#FFD166); color: #fff; box-shadow: 0 10px 30px rgba(255,159,69,0.35); }
-  .btn-call:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255,159,69,0.55); }
-
-  .hero-image { position: relative; }
-  .hero-image img { width: 100%; border-radius: 30px; box-shadow: 0 30px 80px rgba(232,101,26,0.25); }
-  .hero-image .floating-card { position: absolute; background: #fff; padding: 18px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.12); display: flex; align-items: center; gap: 15px; animation: float 4s ease-in-out infinite; }
-  .floating-card.card1 { top: 30px; left: -30px; }
-  .floating-card.card2 { bottom: 40px; right: -30px; animation-delay: 2s; }
-  .floating-card img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; box-shadow: none; }
-  .floating-card h4 { font-size: 1rem; color: var(--dark); }
-  .floating-card p { font-size: 0.8rem; color: #888; }
-
-  /* ── Stats ── */
-  .stats { padding: 60px; background: var(--gradient); color: #fff; }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: center; }
-  .stat h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; }
-
-  /* ── Section base ── */
-  section { padding: 100px 60px; }
-  .section-title { text-align: center; margin-bottom: 70px; }
-  .section-title .small { color: var(--primary); font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; }
-  .section-title h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--dark); margin-top: 10px; }
-  .section-title h2 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-  /* ── About ── */
-  .about { background: #fff; }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1300px; margin: 0 auto; }
-  .about-images { position: relative; }
-  .about-images img { width: 100%; border-radius: 25px; }
-  .about-images .img1 { width: 75%; }
-  .about-images .img2 { position: absolute; bottom: -40px; right: 0; width: 55%; border: 8px solid #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
-  .about-text h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--dark); margin-bottom: 20px; }
-  .about-text p { color: #6b4226; margin-bottom: 25px; line-height: 1.9; }
-  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 30px; }
-  .about-feature { display: flex; gap: 15px; align-items: center; }
-  .about-feature img { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; }
-  .about-feature h4 { color: var(--dark); margin-bottom: 5px; font-size: 1rem; }
-  .about-feature p { font-size: 0.85rem; color: #9a6040; }
-
-  /* ── Services ── */
-  .services { background: linear-gradient(180deg, #FFF4EC 0%, #fff 100%); }
-  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; max-width: 1300px; margin: 0 auto; }
-  .service-card { background: #fff; border-radius: 20px; box-shadow: 0 10px 40px rgba(232,101,26,0.08); transition: 0.5s; overflow: hidden; }
-  .service-card:hover { transform: translateY(-15px); box-shadow: 0 25px 60px rgba(232,101,26,0.22); }
-  .service-img-wrap { width: 100%; height: 200px; overflow: hidden; position: relative; }
-  .service-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-  .service-card:hover .service-img-wrap img { transform: scale(1.2); }
-  .service-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(232,101,26,0.35)); }
-  .service-content { padding: 25px; text-align: center; }
-  .service-content h3 { color: var(--dark); margin-bottom: 10px; font-size: 1.2rem; }
-  .service-content p { color: #7a4a2a; font-size: 0.9rem; line-height: 1.6; }
-
-  /* ── Doctors ── */
-  .doctors { background: #fff; }
-  .doctors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
-  .doctor-card { background: #fff; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.08); transition: 0.5s; }
-  .doctor-card:hover { transform: translateY(-10px); box-shadow: 0 25px 60px rgba(232,101,26,0.18); }
-  .doctor-img-wrap { height: 350px; overflow: hidden; position: relative; }
-  .doctor-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.6s ease; }
-  .doctor-card:hover .doctor-img-wrap img { transform: scale(1.15); }
-  .doctor-img-wrap::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(transparent, rgba(232,101,26,0.15)); }
-  .doctor-info { padding: 25px; text-align: center; }
-  .doctor-info h3 { color: var(--dark); margin-bottom: 5px; }
-  .doctor-info p { color: var(--primary); font-weight: 500; }
-
-  /* ── Why Us ── */
-  .why-us { background: var(--dark); color: #fff; }
-  .why-us .section-title h2 { color: #fff; }
-  .why-us .section-title .small { color: var(--accent); }
-  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
-  .why-card { background: rgba(255,255,255,0.05); border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,159,69,0.2); transition: 0.4s; overflow: hidden; }
-  .why-card:hover { background: rgba(232,101,26,0.12); transform: translateY(-10px); border-color: rgba(255,159,69,0.5); }
-  .why-img-wrap { height: 200px; overflow: hidden; }
-  .why-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-  .why-card:hover .why-img-wrap img { transform: scale(1.15); }
-  .why-content { padding: 30px; }
-  .why-content h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--accent); }
-  .why-content p { opacity: 0.85; line-height: 1.8; font-size: 0.95rem; }
-
-  /* ── Testimonials ── */
-  .testimonials { background: linear-gradient(135deg, #FFF4E5, #FFF9EC); }
-  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
-  .testi-card { background: #fff; padding: 35px; border-radius: 20px; box-shadow: 0 15px 40px rgba(232,101,26,0.08); border-top: 4px solid transparent; border-image: var(--gradient) 1; transition: 0.4s; }
-  .testi-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(232,101,26,0.15); }
-  .testi-card .stars { color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; }
-  .testi-card p { color: #5a3820; line-height: 1.8; margin-bottom: 25px; font-style: italic; }
-  .testi-user { display: flex; align-items: center; gap: 15px; }
-  .testi-user img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
-  .testi-user h4 { color: var(--dark); }
-  .testi-user span { color: #888; font-size: 0.85rem; }
-
-  /* ── Booking ── */
-  .booking { background: #fff; }
-  .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
-  .booking-image img { width: 100%; border-radius: 25px; box-shadow: 0 20px 60px rgba(232,101,26,0.18); }
-  .booking-form { background: linear-gradient(135deg, #fff, #FFF4EC); padding: 45px; border-radius: 25px; box-shadow: 0 20px 60px rgba(232,101,26,0.12); }
-  .booking-form h3 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--dark); margin-bottom: 25px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-  .form-group { margin-bottom: 18px; }
-  .form-group label { display: block; margin-bottom: 6px; color: var(--dark); font-size: 0.9rem; font-weight: 500; }
-  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 13px 18px; border: 2px solid #f0ddd0; border-radius: 12px; font-size: 0.95rem; font-family: inherit; transition: 0.3s; background: #fff; color: #333; }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(232,101,26,0.1); }
-
-  /* ── Contact ── */
-  .contact-section { background: linear-gradient(135deg, #FFF4E5, #FFF9EC); }
-  .contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; max-width: 1300px; margin: 0 auto; }
-  .contact-card { background: #fff; padding: 40px 25px; border-radius: 20px; text-align: center; transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; }
-  .contact-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(232,101,26,0.15); }
-  .contact-card .icon-img { width: 80px; height: 80px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent); }
-  .contact-card .icon-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-  .contact-card:hover .icon-img img { transform: scale(1.2); }
-  .contact-card h4 { color: var(--dark); margin-bottom: 10px; font-size: 1.2rem; }
-  .contact-card p { color: #6b4226; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; }
-  .contact-card a { color: var(--primary); text-decoration: none; font-weight: 600; word-break: break-word; }
-  .contact-card a:hover { color: var(--primary-dark); }
-
-  /* ── Footer ── */
-  footer { background: var(--dark); color: #fff; padding: 60px 60px 25px; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1300px; margin: 0 auto 40px; }
-  .footer-col h4 { font-family: 'Playfair Display', serif; margin-bottom: 20px; font-size: 1.3rem; color: var(--accent); }
-  .footer-col p, .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; line-height: 2; font-size: 0.9rem; display: block; transition: 0.3s; }
-  .footer-col a:hover { color: var(--accent); padding-left: 5px; }
-  .social-links { display: flex; gap: 12px; margin-top: 15px; }
-  .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-  .social-links a:hover { background: var(--gradient); transform: translateY(-3px); }
-  .footer-bottom { border-top: 1px solid rgba(255,159,69,0.2); padding-top: 25px; text-align: center; opacity: 0.7; font-size: 0.9rem; }
-
-  /* ── Float WA ── */
-  .float-wa { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: #25D366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 10px 30px rgba(37,211,102,0.4); z-index: 999; animation: pulse 2s infinite; text-decoration: none; }
-  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 50% { box-shadow: 0 0 0 20px rgba(37,211,102,0); } }
-
-  /* ── Modal ── */
-  .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 99999; cursor: auto; }
-  .modal.active { display: flex; }
-  .modal-content { background: #fff; padding: 40px; border-radius: 20px; max-width: 450px; text-align: center; cursor: auto; }
-  .modal-content i { font-size: 4rem; color: #25D366; margin-bottom: 20px; }
-  .modal-content h3 { font-family: 'Playfair Display', serif; color: var(--dark); margin-bottom: 15px; }
-  .modal-content p { color: #666; margin-bottom: 25px; line-height: 1.7; }
-  .modal-content .btn { cursor: pointer; }
-
-  /* ── Orange accent stripe on service cards hover ── */
-  .service-card::before { content: ''; display: block; height: 4px; background: var(--gradient); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
-  .service-card:hover::before { transform: scaleX(1); }
-
-  /* ── Responsive ── */
-  @media(max-width: 968px) {
-    body { cursor: auto; } .cursor-dot { display: none; }
-    a, button, input, select, textarea, .service-card, .doctor-card { cursor: auto; }
-    .top-bar { padding: 10px 20px; flex-direction: column; gap: 8px; text-align: center; }
-    .top-bar .contact-items { flex-direction: column; gap: 8px; }
-    nav { padding: 15px 20px; } nav ul { display: none; }
-    .hero { padding: 60px 20px; }
-    .hero-grid, .about-grid, .booking-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-text h1 { font-size: 2.5rem; }
-    .stats-grid, .services-grid, .doctors-grid, .why-grid, .testi-grid, .contact-grid, .form-row { grid-template-columns: 1fr 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-    section { padding: 60px 20px; }
-    .section-title h2 { font-size: 2rem; }
-    .stats { padding: 40px 20px; }
-  }
-  @media(max-width: 600px) {
-    .stats-grid, .services-grid, .doctors-grid, .why-grid, .testi-grid, .contact-grid, .form-row { grid-template-columns: 1fr; }
-  }
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="preloader" id="preloader"><div class="loader"></div></div>
-
-<div class="top-bar">
-  <div class="contact-items">
-    <a href="tel:9092543740"><i class="fas fa-phone"></i> +91 9092543740</a>
-    <a href="mailto:praveenkumarsankar01@gmail.com"><i class="fas fa-envelope"></i> praveenkumarsankar01@gmail.com</a>
-    <span><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i> Kodambakkam, Chennai</span>
-  </div>
-  <div class="top-social">
-    <a href="https://wa.me/919092543740"><i class="fab fa-whatsapp"></i></a>
-    <a href="#"><i class="fab fa-facebook-f"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
+<!-- ══ Utility bar ══ -->
+<div class="utility">
+  <div class="shell">
+    <div class="utility-left">
+      <a href="tel:+919092543740"><i class="fas fa-phone"></i> +91 90925 43740</a>
+      <a href="mailto:praveenkumarsankar01@gmail.com"><i class="fas fa-envelope"></i> praveenkumarsankar01@gmail.com</a>
+      <a href="#find"><i class="fas fa-location-dot"></i> Kodambakkam, Chennai</a>
+    </div>
+    <div class="utility-right">
+      <span><i class="far fa-clock"></i> Mon&ndash;Sat 8:00&ndash;21:00</span>
+    </div>
   </div>
 </div>
 
-<nav id="navbar">
-  <div class="logo">α Alpha Clinic</div>
+<!-- ══ Header ══ -->
+<header class="hdr" id="hdr">
+  <div class="shell">
+    <a href="#" class="brand">
+      <span class="brand-mark">&alpha;</span>
+      <span>
+        <span class="brand-name">Alpha Clinic</span>
+        <span class="brand-sub">Multi-Speciality &middot; Chennai</span>
+      </span>
+    </a>
+
+    <nav>
+      <ul class="nav" id="nav">
+        <li><a href="#top">Home</a></li>
+        <li id="svcParent">
+          <a href="#services">Our Services <i class="fas fa-chevron-down caret"></i></a>
+          <div class="mega">
+            <a href="services/dental-care.html">Dental Care</a>
+            <a href="services/fertility-care.html">Fertility Care</a>
+            <a href="services/maternity-care.html">Maternity Care</a>
+            <a href="services/pediatrics.html">Pediatrics</a>
+            <a href="services/womens-health.html">Women's Health</a>
+            <a href="services/menopause-care.html">Menopause Care</a>
+            <a href="services/general-health.html">General Health</a>
+            <a href="services/mental-wellness.html">Mental Wellness</a>
+            <a href="services/lab-diagnostics.html">Lab &amp; Diagnostics</a>
+            <div class="mega-foot"><a href="#services">View all services &rarr;</a></div>
+          </div>
+        </li>
+        <li><a href="#conditions">What Hurts?</a></li>
+        <li id="teamParent">
+          <a href="#team">Our Team <i class="fas fa-chevron-down caret"></i></a>
+          <div class="mega">
+            <a href="team/priya-sharma.html">Dr. Priya Sharma<small>Consultant Gynaecologist</small></a>
+            <a href="team/rajesh-kumar.html">Dr. Rajesh Kumar<small>Consultant Paediatrician</small></a>
+            <a href="team/anjali-nair.html">Dr. Anjali Nair<small>Fertility Specialist</small></a>
+            <a href="team/arun-venkatesh.html">Dr. Arun Venkatesh<small>Dental Surgeon & Implantologist</small></a>
+            <div class="mega-foot"><a href="#team">Meet the whole team &rarr;</a></div>
+          </div>
+        </li>
+        <li><a href="#find">Find Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="hdr-actions">
+      <span class="lang">EN</span>
+      <a href="tel:+919092543740" class="icon-btn" aria-label="Call the clinic"><i class="fas fa-phone"></i></a>
+      <a href="#book" class="btn btn-solid btn-sm">Book Online</a>
+      <button class="icon-btn burger" id="burger" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ Mobile nav ══ -->
+<div class="scrim" id="scrim"></div>
+<aside class="mnav" id="mnav">
+  <div class="mnav-top">
+    <span class="brand-name">Alpha Clinic</span>
+    <button class="icon-btn" id="mclose" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
+  </div>
   <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#doctors">Doctors</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#book" class="nav-cta">Book Now</a></li>
+    <li><a href="#top">Home</a></li>
+    <li>
+      <button class="m-toggle" id="mToggle">Our Services <i class="fas fa-chevron-down caret"></i></button>
+      <div class="m-sub" id="mSub">
+        <a href="services/dental-care.html">Dental Care</a>
+        <a href="services/fertility-care.html">Fertility Care</a>
+        <a href="services/maternity-care.html">Maternity Care</a>
+        <a href="services/pediatrics.html">Pediatrics</a>
+        <a href="services/womens-health.html">Women's Health</a>
+        <a href="services/menopause-care.html">Menopause Care</a>
+        <a href="services/general-health.html">General Health</a>
+        <a href="services/mental-wellness.html">Mental Wellness</a>
+        <a href="services/lab-diagnostics.html">Lab &amp; Diagnostics</a>
+      </div>
+    </li>
+    <li><a href="#conditions">What Hurts?</a></li>
+    <li>
+      <button class="m-toggle" id="mToggle2">Our Team <i class="fas fa-chevron-down caret"></i></button>
+      <div class="m-sub" id="mSub2">
+        <a href="team/priya-sharma.html">Dr. Priya Sharma</a>
+        <a href="team/rajesh-kumar.html">Dr. Rajesh Kumar</a>
+        <a href="team/anjali-nair.html">Dr. Anjali Nair</a>
+        <a href="team/arun-venkatesh.html">Dr. Arun Venkatesh</a>
+      </div>
+    </li>
+    <li><a href="#find">Find Us</a></li>
   </ul>
-</nav>
+  <div class="mnav-cta">
+    <a href="#book" class="btn btn-solid">Book Online</a>
+    <a href="tel:+919092543740" class="btn btn-line">Call +91 90925 43740</a>
+  </div>
+</aside>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-grid">
-    <div class="hero-text">
-      <span class="badge">🏥 #1 Trusted Clinic in Kodambakkam</span>
-      <h1>Your Health, <span>Our Priority</span> 🧡</h1>
-      <p>Experience world-class medical care at Alpha Clinic — combining cutting-edge technology with compassionate service. Located conveniently at Kodambakkam Bus Stop, Chennai.</p>
-      <div class="hero-buttons">
-        <a href="#book" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-        <a href="tel:9092543740" class="btn btn-call"><i class="fas fa-phone"></i> Call: 9092543740</a>
-        <a href="https://wa.me/919092543740" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<!-- ══ Hero ══ -->
+<section class="hero" id="top">
+  <div class="shell">
+    <div class="hero-grid">
+      <div class="hero-text rv">
+        <span class="eyebrow">Welcome to Alpha Clinic</span>
+        <h1>Caring professionals dedicated to your health</h1>
+        <p class="lead">A multi-speciality and dental practice in the heart of Kodambakkam. From a routine
+          scale-and-polish to fertility, maternity and paediatric care &mdash; one clinic, one record, one team
+          that knows your family.</p>
+        <div class="hero-cta">
+          <a href="#book" class="btn btn-solid">Book an Appointment</a>
+          <a href="tel:+919092543740" class="btn btn-line"><i class="fas fa-phone"></i> Free Phone Consult</a>
+        </div>
+        <div class="hero-meta">
+          <div><span class="count" data-target="18">0</span><small>Years of Care</small></div>
+          <div><span class="count" data-target="50">0</span><small>Specialists</small></div>
+          <div><span class="count" data-target="10000">0</span><small>Patients Treated</small></div>
+        </div>
       </div>
-    </div>
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800" alt="Doctor">
-      <div class="floating-card card1">
-        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100" alt="">
-        <div><h4>50+ Doctors</h4><p>Expert Specialists</p></div>
-      </div>
-      <div class="floating-card card2">
-        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=100" alt="">
-        <div><h4>10K+ Patients</h4><p>Happy & Healthy</p></div>
+      <div class="hero-media rv">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1000&q=80" alt="Clinician with a patient at Alpha Clinic">
+        <div class="hero-card">
+          <i class="fas fa-shield-heart"></i>
+          <strong>Same-day emergencies</strong>
+          <small>Dental pain and urgent consults seen the same day, six days a week.</small>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="stats">
-  <div class="stats-grid">
-    <div class="stat"><h3 class="counter" data-target="15">0</h3><p>Years of Excellence</p></div>
-    <div class="stat"><h3 class="counter" data-target="50">0</h3><p>Expert Doctors</p></div>
-    <div class="stat"><h3 class="counter" data-target="10000">0</h3><p>Happy Patients</p></div>
-    <div class="stat"><h3 class="counter" data-target="25">0</h3><p>Specialties</p></div>
+
+<!-- ══ Clinic video ══ -->
+<div class="vid-trust">
+  <div class="shell">
+    <span><i class="fas fa-check"></i>NABH accredited</span>
+    <span><i class="fas fa-check"></i>Trusted by Kodambakkam families</span>
+    <span><i class="fas fa-check"></i>Specialist-led since 2008</span>
+  </div>
+</div>
+<div class="vid-head">
+  <div class="shell"><h2>A multi-speciality clinic built around one record</h2></div>
+</div>
+<div class="vid-wrap">
+  <video id="heroVid" autoplay muted loop playsinline preload="metadata"
+         poster="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400&q=80">
+    <source src="assets/media/clinic-hero.mp4" type="video/mp4">
+  </video>
+  <div class="vid-overlay">
+    <div class="shell">
+      <p>Take a look inside Alpha Clinic, Kodambakkam.</p>
+      <button class="vid-mute" id="vidMute" aria-label="Unmute video"><i class="fas fa-volume-xmark"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Trust strip ══ -->
+<section class="trust">
+  <div class="shell">
+    <div class="trust-item"><i class="fas fa-certificate"></i><strong>NABH Accredited</strong><small>Audited safety &amp; hygiene</small></div>
+    <div class="trust-item"><i class="fas fa-user-doctor"></i><strong>Specialist-Led</strong><small>Every case, a named consultant</small></div>
+    <div class="trust-item"><i class="fas fa-microscope"></i><strong>In-House Diagnostics</strong><small>Labs, scans &amp; digital X-ray</small></div>
+    <div class="trust-item"><i class="fas fa-headset"></i><strong>24/7 Helpline</strong><small>Emergency line always open</small></div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ══ Conditions ══ -->
+<section class="conditions" id="conditions">
+  <div class="shell">
+    <div class="sec-head rv">
+      <span class="eyebrow">What brings you in?</span>
+      <h2>Start with what you're feeling</h2>
+      <p class="lead" style="margin:20px auto 0">You don't need a diagnosis to book. Tell us the symptom and we'll
+        route you to the right consultant &mdash; often on the same day.</p>
+    </div>
+    <div class="cond-grid">
+      <div class="cond rv"><i class="fas fa-tooth"></i><h4>Toothache &amp; Gum Pain</h4><p>Throbbing pain, bleeding gums, a chipped tooth or a crown that has come loose. Emergency dental slots held daily.</p><a href="services/dental-care.html" class="more">Book dental <i class="fas fa-arrow-right"></i></a></div>
+      <div class="cond rv"><i class="fas fa-baby"></i><h4>Trying to Conceive</h4><p>Months of trying without result, irregular cycles or a previous loss. Confidential fertility assessment and IVF/IUI pathways.</p><a href="services/fertility-care.html" class="more">Talk to a specialist <i class="fas fa-arrow-right"></i></a></div>
+      <div class="cond rv"><i class="fas fa-person-pregnant"></i><h4>Pregnancy &amp; After</h4><p>Booking scans, growth monitoring, delivery planning and postnatal recovery &mdash; one obstetric team from first visit to sixth week.</p><a href="services/maternity-care.html" class="more">Start maternity care <i class="fas fa-arrow-right"></i></a></div>
+      <div class="cond rv"><i class="fas fa-child-reaching"></i><h4>Child Fever &amp; Growth</h4><p>Recurring fevers, feeding trouble, missed milestones or a vaccination that is overdue. Paediatric clinic runs daily.</p><a href="services/pediatrics.html" class="more">See a paediatrician <i class="fas fa-arrow-right"></i></a></div>
+      <div class="cond rv"><i class="fas fa-venus"></i><h4>Cycle &amp; Menopause</h4><p>Heavy or painful periods, PCOS, hot flushes and mood change. Gynaecology and hormone support under one roof.</p><a href="services/womens-health.html" class="more">Book gynaecology <i class="fas fa-arrow-right"></i></a></div>
+      <div class="cond rv"><i class="fas fa-heart-pulse"></i><h4>Fatigue, Sugar &amp; BP</h4><p>Tiredness that won't lift, a family history of diabetes, or numbers your last check-up flagged. Full master health screening.</p><a href="services/general-health.html" class="more">Book a check-up <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ Featured treatments ══ -->
+<section class="about">
+  <div class="shell">
+    <div class="feat-top rv">
+      <div class="sec-head sec-head--left">
+        <span class="eyebrow">Featured treatments</span>
+        <h2>Care we are known for</h2>
+        <p>Nine specialities under one roof, sharing one patient record &mdash; so nothing has to be explained twice.</p>
+      </div>
+      <div class="feat-nav">
+        <button id="featPrev" aria-label="Previous treatments"><i class="fas fa-chevron-left"></i></button>
+        <button id="featNext" aria-label="More treatments"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+    <div class="feat-rail" id="featRail">
+      <article class="feat-card">
+        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Dental Care at Alpha Clinic" loading="lazy">
+        <div class="feat-body">
+          <h4>Dental Care</h4>
+          <p>Check-ups, root canals, crowns and implants — every plan costed in writing before anything is drilled.</p>
+          <a href="services/dental-care.html" class="btn btn-line btn-sm">Read More</a>
+        </div>
+      </article>
+      <article class="feat-card">
+        <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80" alt="Fertility Care at Alpha Clinic" loading="lazy">
+        <div class="feat-body">
+          <h4>Fertility Care</h4>
+          <p>Both partners assessed together, with honest odds for each pathway from timed cycles through to IVF.</p>
+          <a href="services/fertility-care.html" class="btn btn-line btn-sm">Read More</a>
+        </div>
+      </article>
+      <article class="feat-card">
+        <img src="https://images.unsplash.com/photo-1596213281525-7811bbc7c1c3?w=600&q=80" alt="Maternity Care at Alpha Clinic" loading="lazy">
+        <div class="feat-body">
+          <h4>Maternity Care</h4>
+          <p>One obstetrician from your first dating scan through to the six-week postnatal review.</p>
+          <a href="services/maternity-care.html" class="btn btn-line btn-sm">Read More</a>
+        </div>
+      </article>
+      <article class="feat-card">
+        <img src="https://images.unsplash.com/photo-1676313030076-4ac0b37050fd?w=600&q=80" alt="Pediatrics at Alpha Clinic" loading="lazy">
+        <div class="feat-body">
+          <h4>Pediatrics</h4>
+          <p>The full IAP immunisation schedule, growth review, and same-day slots when a child is unwell.</p>
+          <a href="services/pediatrics.html" class="btn btn-line btn-sm">Read More</a>
+        </div>
+      </article>
+      <article class="feat-card">
+        <img src="https://images.unsplash.com/photo-1683348858658-7c6b0eff2a16?w=600&q=80" alt="Women’s Health at Alpha Clinic" loading="lazy">
+        <div class="feat-body">
+          <h4>Women’s Health</h4>
+          <p>PCOS, endometriosis and heavy periods investigated properly — consult, scan and bloods in one visit.</p>
+          <a href="services/womens-health.html" class="btn btn-line btn-sm">Read More</a>
+        </div>
+      </article>
+      <article class="feat-card">
+        <img src="https://images.unsplash.com/photo-1631815587646-b85a1bb027e1?w=600&q=80" alt="General Health at Alpha Clinic" loading="lazy">
+        <div class="feat-body">
+          <h4>General Health</h4>
+          <p>Master check-ups matched to your age and risk, plus long-term diabetes and blood pressure care.</p>
+          <a href="services/general-health.html" class="btn btn-line btn-sm">Read More</a>
+        </div>
+      </article>
+      <article class="feat-card">
+        <img src="https://images.unsplash.com/photo-1606206591513-adbfbdd7a177?w=600&q=80" alt="Lab and Diagnostics at Alpha Clinic" loading="lazy">
+        <div class="feat-body">
+          <h4>Lab &amp; Diagnostics</h4>
+          <p>Bloods, ultrasound, ECG and digital X-ray on site, with most reports back the same working day.</p>
+          <a href="services/lab-diagnostics.html" class="btn btn-line btn-sm">Read More</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Services (lining list) ══ -->
+<section id="services">
+  <div class="shell">
+    <div class="svc-wrap">
+      <div class="svc-side rv">
+        <span class="eyebrow">Our Services</span>
+        <h2>Nine specialities, one waiting room</h2>
+        <p class="lead" style="margin-top:20px">Care that would normally take four referrals and three buildings sits
+          on a single corridor in Kodambakkam &mdash; with your notes, scans and prescriptions in one shared record.</p>
+        <a href="#book" class="btn btn-solid">Book a Consultation</a>
+      </div>
+
+      <div class="svc-list">
+        <a class="svc-row rv" href="services/dental-care.html" data-service="Dental Care">
+          <span class="svc-num">01</span>
+          <div><h3>Dental Care <span class="svc-tag">New</span></h3><p>Scaling and polishing, fillings, root canal, extractions, crowns and bridges, clear aligners and whitening &mdash; with digital intraoral X-ray on site.</p></div>
+          <span class="svc-go"><i class="fas fa-arrow-right"></i></span></a>
+        <a class="svc-row rv" href="services/fertility-care.html" data-service="Fertility Care">
+          <span class="svc-num">02</span>
+          <div><h3>Fertility Care</h3><p>Couple assessment, ovulation tracking, IUI and IVF pathways, and counselling through every cycle &mdash; handled discreetly and without pressure.</p></div>
+          <span class="svc-go"><i class="fas fa-arrow-right"></i></span></a>
+        <a class="svc-row rv" href="services/maternity-care.html" data-service="Maternity Care">
+          <span class="svc-num">03</span>
+          <div><h3>Maternity Care</h3><p>Antenatal packages, anomaly and growth scans, nutrition guidance, delivery planning and the full postnatal follow-up for mother and baby.</p></div>
+          <span class="svc-go"><i class="fas fa-arrow-right"></i></span></a>
+        <a class="svc-row rv" href="services/pediatrics.html" data-service="Pediatrics">
+          <span class="svc-num">04</span>
+          <div><h3>Pediatrics</h3><p>Newborn checks, the complete IAP immunisation schedule, growth and development review, and same-day sick-child appointments.</p></div>
+          <span class="svc-go"><i class="fas fa-arrow-right"></i></span></a>
+        <a class="svc-row rv" href="services/womens-health.html" data-service="Women's Health">
+          <span class="svc-num">05</span>
+          <div><h3>Women's Health</h3><p>Gynaecology consults, PCOS and endometriosis management, cervical screening, contraception advice and pelvic ultrasound.</p></div>
+          <span class="svc-go"><i class="fas fa-arrow-right"></i></span></a>
+        <a class="svc-row rv" href="services/menopause-care.html" data-service="Menopause Care">
+          <span class="svc-num">06</span>
+          <div><h3>Menopause Care</h3><p>Symptom review, hormone therapy where appropriate, bone-density guidance and long-term cardiovascular planning.</p></div>
+          <span class="svc-go"><i class="fas fa-arrow-right"></i></span></a>
+        <a class="svc-row rv" href="services/general-health.html" data-service="General Health">
+          <span class="svc-num">07</span>
+          <div><h3>General Health</h3><p>Master health check-ups, diabetes and blood-pressure management, thyroid care, vaccination and everyday family medicine.</p></div>
+          <span class="svc-go"><i class="fas fa-arrow-right"></i></span></a>
+        <a class="svc-row rv" href="services/mental-wellness.html" data-service="Mental Wellness">
+          <span class="svc-num">08</span>
+          <div><h3>Mental Wellness</h3><p>Confidential counselling for anxiety, low mood, postpartum depression and stress &mdash; in person or by secure video call.</p></div>
+          <span class="svc-go"><i class="fas fa-arrow-right"></i></span></a>
+        <a class="svc-row rv" href="services/lab-diagnostics.html" data-service="Lab &amp; Diagnostics">
+          <span class="svc-num">09</span>
+          <div><h3>Lab &amp; Diagnostics</h3><p>Blood and hormone panels, ultrasound, ECG and digital X-ray &mdash; most reports back the same working day.</p></div>
+          <span class="svc-go"><i class="fas fa-arrow-right"></i></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ Why us ══ -->
+<section>
+  <div class="shell">
+    <div class="why">
+      <div class="why-grid rv">
+        <div class="why-item">
+          <i class="fas fa-user-doctor"></i>
+          <h4>The Same Consultant</h4>
+          <p>You see the doctor who knows your history, not whoever happens to be free that morning.</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-shield-halved"></i>
+          <h4>Safe, Sterile Care</h4>
+          <p>NABH-accredited protocols, audited sterilisation, and a cold chain we can evidence.</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-file-lines"></i>
+          <h4>Costs In Writing</h4>
+          <p>An itemised estimate before treatment starts, with urgent work separated from what can wait.</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-face-smile"></i>
+          <h4>Unhurried Visits</h4>
+          <p>Appointments are spaced so consultations are not rushed and questions actually get answered.</p>
+        </div>
+      </div>
+      <div class="why-media rv">
+        <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80" alt="Consultation at Alpha Clinic, Kodambakkam" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ About ══ -->
 <section class="about" id="about">
-  <div class="about-grid">
-    <div class="about-images" data-aos="fade-right">
-      <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=600" class="img1" alt="">
-      <img src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=400" class="img2" alt="">
-    </div>
-    <div class="about-text" data-aos="fade-left">
-      <span style="color:var(--primary); font-weight:600; letter-spacing:3px; font-size:0.9rem;">ABOUT US</span>
-      <h3>Compassionate Care, <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Modern Medicine</span></h3>
-      <p>At Alpha Clinic, we redefine healthcare with a perfect blend of advanced medical technology and genuine compassion. Located at the heart of Kodambakkam, we serve families across Chennai with personalized treatment plans.</p>
-      <div class="about-features">
-        <div class="about-feature"><img src="https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?w=100" alt=""><div><h4>Certified</h4><p>NABH Accredited</p></div></div>
-        <div class="about-feature"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=100" alt=""><div><h4>24/7 Service</h4><p>Always Available</p></div></div>
-        <div class="about-feature"><img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=100" alt=""><div><h4>Advanced Tech</h4><p>Latest Equipment</p></div></div>
-        <div class="about-feature"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=100" alt=""><div><h4>Family Care</h4><p>All Ages</p></div></div>
+  <div class="shell">
+    <div class="about-grid">
+      <div class="about-media rv">
+        <img class="a1" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=900&q=80" alt="Alpha Clinic consulting room">
+        <img class="a2" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=700&q=80" alt="Clinical team at work">
+        <div class="badge"><span>18</span><small>Years in Chennai</small></div>
+      </div>
+      <div class="rv">
+        <span class="eyebrow">About the clinic</span>
+        <h2>A family practice that grew into a speciality centre</h2>
+        <p class="lead" style="margin-top:20px">Alpha Clinic opened as a two-room general practice beside Kodambakkam
+          bus stop. Families kept asking for the next thing &mdash; a paediatrician, then a gynaecologist, then a
+          dentist &mdash; and we built around them rather than sending them across the city.</p>
+        <div class="checks">
+          <div class="check"><i class="fas fa-check"></i><div><strong>NABH accredited</strong><small>Independently audited hygiene, sterilisation and safety protocols.</small></div></div>
+          <div class="check"><i class="fas fa-check"></i><div><strong>One shared record</strong><small>Your scans and prescriptions follow you between departments.</small></div></div>
+          <div class="check"><i class="fas fa-check"></i><div><strong>Transparent pricing</strong><small>Written estimates before treatment starts. No surprise line items.</small></div></div>
+          <div class="check"><i class="fas fa-check"></i><div><strong>Tamil, English &amp; Hindi</strong><small>Consultations in the language you are most comfortable in.</small></div></div>
+        </div>
+        <a href="#team" class="btn btn-line">Meet the Team</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="section-title" data-aos="fade-up">
-    <span class="small">OUR SERVICES</span>
-    <h2>Comprehensive <span>Healthcare</span> Services</h2>
-  </div>
-  <div class="services-grid">
-    <div class="service-card" data-aos="fade-up"><div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500" alt=""></div><div class="service-content"><h3>Fertility Care</h3><p>IVF, IUI & Family Planning Solutions</p></div></div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=500" alt=""></div><div class="service-content"><h3>Maternity Care</h3><p>Complete Pre & Post-natal Support</p></div></div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=500" alt=""></div><div class="service-content"><h3>Pediatrics</h3><p>Child Vaccinations & Wellness</p></div></div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="300"><div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=500" alt=""></div><div class="service-content"><h3>Women's Health</h3><p>Gynecology & Wellness Care</p></div></div>
-    <div class="service-card" data-aos="fade-up"><div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=500" alt=""></div><div class="service-content"><h3>Menopause Care</h3><p>Hormone Therapy & Support</p></div></div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=500" alt=""></div><div class="service-content"><h3>General Health</h3><p>Master Checkups & Diabetes</p></div></div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500" alt=""></div><div class="service-content"><h3>Mental Wellness</h3><p>Counseling & Therapy</p></div></div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="300"><div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500" alt=""></div><div class="service-content"><h3>Lab & Diagnostics</h3><p>Blood Tests, Scans & X-Ray</p></div></div>
-  </div>
-</section>
-
-<!-- DOCTORS -->
-<section class="doctors" id="doctors">
-  <div class="section-title" data-aos="fade-up">
-    <span class="small">OUR TEAM</span>
-    <h2>Meet Our <span>Expert</span> Doctors</h2>
-  </div>
-  <div class="doctors-grid">
-    <div class="doctor-card" data-aos="fade-up"><div class="doctor-img-wrap"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500" alt=""></div><div class="doctor-info"><h3>Dr. Priya Sharma</h3><p>Gynecologist • 15+ Years</p></div></div>
-    <div class="doctor-card" data-aos="fade-up" data-aos-delay="150"><div class="doctor-img-wrap"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500" alt=""></div><div class="doctor-info"><h3>Dr. Rajesh Kumar</h3><p>Pediatrician • 12+ Years</p></div></div>
-    <div class="doctor-card" data-aos="fade-up" data-aos-delay="300"><div class="doctor-img-wrap"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500" alt=""></div><div class="doctor-info"><h3>Dr. Anjali Nair</h3><p>Fertility Expert • 18+ Years</p></div></div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section class="why-us">
-  <div class="section-title" data-aos="fade-up">
-    <span class="small" style="color:var(--accent);">WHY CHOOSE US</span>
-    <h2 style="color:#fff;">Excellence in <span>Every Step</span></h2>
-  </div>
-  <div class="why-grid">
-    <div class="why-card" data-aos="zoom-in"><div class="why-img-wrap"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500" alt=""></div><div class="why-content"><h3>Expert Doctors</h3><p>Highly qualified specialists with decades of experience treating thousands of patients.</p></div></div>
-    <div class="why-card" data-aos="zoom-in" data-aos-delay="150"><div class="why-img-wrap"><img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=500" alt=""></div><div class="why-content"><h3>24/7 Support</h3><p>Round-the-clock consultation and emergency support whenever you need.</p></div></div>
-    <div class="why-card" data-aos="zoom-in" data-aos-delay="300"><div class="why-img-wrap"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500" alt=""></div><div class="why-content"><h3>Trusted Care</h3><p>NABH accredited facility with stringent hygiene and safety protocols.</p></div></div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="section-title" data-aos="fade-up">
-    <span class="small">TESTIMONIALS</span>
-    <h2>What Our <span>Patients</span> Say</h2>
-  </div>
-  <div class="testi-grid">
-    <div class="testi-card" data-aos="fade-up"><div class="stars">★★★★★</div><p>"Alpha Clinic gave me the best care during my pregnancy. The doctors are amazing and very supportive."</p><div class="testi-user"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt=""><div><h4>Lakshmi R.</h4><span>Patient</span></div></div></div>
-    <div class="testi-card" data-aos="fade-up" data-aos-delay="150"><div class="stars">★★★★★</div><p>"Excellent pediatric care! My kids love coming here. Staff is friendly and clinic is super clean."</p><div class="testi-user"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt=""><div><h4>Meera S.</h4><span>Mother of 2</span></div></div></div>
-    <div class="testi-card" data-aos="fade-up" data-aos-delay="300"><div class="stars">★★★★★</div><p>"The fertility treatment journey was made smooth and comforting. Highly recommend Alpha Clinic."</p><div class="testi-user"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100" alt=""><div><h4>Karthik & Divya</h4><span>Happy Parents</span></div></div></div>
-  </div>
-</section>
-
-<!-- BOOKING -->
-<section class="booking" id="book">
-  <div class="booking-grid">
-    <div class="booking-image" data-aos="fade-right">
-      <img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=700" alt="">
+<!-- ══ Team ══ -->
+<section id="team">
+  <div class="shell">
+    <div class="sec-head rv">
+      <span class="eyebrow">Meet our team</span>
+      <h2>Caring professionals dedicated to your health</h2>
+      <p class="lead" style="margin:20px auto 0">You will see the same consultant each visit &mdash; the person who
+        knows your history, not whoever is free that morning.</p>
+      <p class="lead" style="margin:14px auto 0"><strong>Select any consultant below to read their full profile</strong> &mdash; qualifications, areas of expertise and the work they have done so far.</p>
     </div>
-    <div class="booking-form" data-aos="fade-left">
-      <span style="color:var(--primary); font-weight:600; letter-spacing:3px; font-size:0.9rem;">APPOINTMENT</span>
-      <h3>Book Your Visit Today</h3>
-      <form id="bookingForm">
-        <div class="form-row">
-          <div class="form-group"><label>Full Name *</label><input type="text" name="name" placeholder="John Doe" required></div>
-          <div class="form-group"><label>Age *</label><input type="number" name="age" placeholder="35" required></div>
+    <div class="team-grid">
+      <a class="doc rv" href="team/priya-sharma.html">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80" alt="Dr. Priya Sharma">
+          <span class="status">Accepting patients</span>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label>Phone *</label><input type="tel" name="phone" placeholder="9876543210" required></div>
-          <div class="form-group"><label>Gender *</label>
-            <select name="gender" required><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select>
-          </div>
+        <h4>Dr. Priya Sharma</h4>
+        <p class="role">Consultant Gynaecologist</p>
+        <p class="qual">MBBS, MS (OBG) &middot; 15+ years</p>
+      </a>
+      <a class="doc rv" href="team/rajesh-kumar.html">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80" alt="Dr. Rajesh Kumar">
+          <span class="status">Accepting patients</span>
         </div>
-        <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
-        <div class="form-row">
-          <div class="form-group"><label>Service *</label>
-            <select name="service" required>
-              <option value="">Select Service</option>
-              <option>Fertility Care</option><option>Maternity Care</option><option>Pediatrics</option>
-              <option>Women's Health</option><option>Menopause Care</option><option>General Health</option>
-              <option>Mental Wellness</option><option>Lab & Diagnostics</option>
+        <h4>Dr. Rajesh Kumar</h4>
+        <p class="role">Consultant Paediatrician</p>
+        <p class="qual">MBBS, MD (Paediatrics) &middot; 12+ years</p>
+      </a>
+      <a class="doc rv" href="team/anjali-nair.html">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Dr. Anjali Nair">
+          <span class="status">Accepting patients</span>
+        </div>
+        <h4>Dr. Anjali Nair</h4>
+        <p class="role">Fertility Specialist</p>
+        <p class="qual">MBBS, DNB, Fellowship in ART &middot; 18+ years</p>
+      </a>
+      <a class="doc rv" href="team/arun-venkatesh.html">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Dr. Arun Venkatesh">
+          <span class="status">Accepting patients</span>
+        </div>
+        <h4>Dr. Arun Venkatesh</h4>
+        <p class="role">Dental Surgeon &amp; Implantologist</p>
+        <p class="qual">BDS, MDS (Prosthodontics) &middot; 11+ years</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Approach ══ -->
+<section class="approach">
+  <div class="shell">
+    <div class="sec-head rv">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps, no runaround</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span>STEP 01</span><h4>Tell us what's wrong</h4><p>Book online in under a minute or call the helpline. If you're unsure which department you need, our front desk will place you.</p></div>
+      <div class="step rv"><span>STEP 02</span><h4>Get assessed properly</h4><p>A full consultation with a named specialist &mdash; never a five-minute queue. Any labs or scans are done in-house the same visit.</p></div>
+      <div class="step rv"><span>STEP 03</span><h4>Leave with a plan</h4><p>A written treatment plan with costs, timelines and a follow-up date. Your record stays with us for every future visit.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Testimonials ══ -->
+<section>
+  <div class="shell">
+    <div class="sec-head rv">
+      <span class="eyebrow">Patient stories</span>
+      <h2>What families in Kodambakkam say</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote rv">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;They looked after me through the whole pregnancy. Same doctor at every scan, and she remembered my history without opening the file.&rdquo;</p>
+        <div class="who"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt=""><div><strong>Lakshmi R.</strong><small>Maternity patient</small></div></div>
+      </div>
+      <div class="quote rv">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;My son's vaccinations, my root canal and my mother's sugar check all happen in the same building. That alone saved us months of running around.&rdquo;</p>
+        <div class="who"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&q=80" alt=""><div><strong>Meera S.</strong><small>Mother of two</small></div></div>
+      </div>
+      <div class="quote rv">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;Four years of trying, and they were the first team to actually explain what was happening. The costs were written down before we started.&rdquo;</p>
+        <div class="who"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt=""><div><strong>Karthik &amp; Divya</strong><small>Fertility patients</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Booking ══ -->
+<section class="book" id="book">
+  <div class="shell">
+    <div class="book-grid">
+      <div class="book-side rv">
+        <span class="eyebrow">Book online</span>
+        <h2>Reserve your visit</h2>
+        <p class="lead" style="margin-top:20px">Send the form and our front desk confirms by phone, usually within
+          the hour during clinic time. For anything urgent, call us directly.</p>
+        <div class="info"><i class="fas fa-location-dot"></i><div><strong>Address</strong><span>Near Kodambakkam Bus Stop,<br>Chennai &ndash; 600024</span></div></div>
+        <div class="info"><i class="fas fa-phone"></i><div><strong>Reception</strong><span>+91 90925 43740</span></div></div>
+        <div class="info"><i class="far fa-clock"></i><div><strong>Clinic Hours</strong><span>Mon&ndash;Sat 8:00 AM &ndash; 9:00 PM<br>Sunday 9:00 AM &ndash; 1:00 PM</span></div></div>
+        <div class="info"><i class="fas fa-truck-medical"></i><div><strong>Emergencies</strong><span>Helpline answered 24 / 7</span></div></div>
+      </div>
+
+      <form class="form rv" id="bookingForm" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="f-name">Full Name <span class="req">*</span></label><input id="f-name" type="text" name="name" placeholder="Your full name" required></div>
+          <div class="field"><label for="f-phone">Phone <span class="req">*</span></label><input id="f-phone" type="tel" name="phone" placeholder="10-digit mobile number" required></div>
+          <div class="field"><label for="f-age">Age <span class="req">*</span></label><input id="f-age" type="number" name="age" min="0" max="120" placeholder="Years" required></div>
+          <div class="field"><label for="f-gender">Gender <span class="req">*</span></label>
+            <select id="f-gender" name="gender" required>
+              <option value="">Select</option><option>Male</option><option>Female</option><option>Other</option>
             </select>
           </div>
-          <div class="form-group"><label>Doctor</label>
-            <select name="doctor">
-              <option value="Any">Any Available</option>
-              <option>Dr. Priya Sharma</option><option>Dr. Rajesh Kumar</option><option>Dr. Anjali Nair</option>
+          <div class="field full"><label for="f-email">Email <span class="req">*</span></label><input id="f-email" type="email" name="email" placeholder="you@example.com" required></div>
+          <div class="field"><label for="f-service">Service <span class="req">*</span></label>
+            <select id="f-service" name="service" required>
+              <option value="">Select service</option>
+              <option>Dental Care</option>
+              <option>Fertility Care</option>
+              <option>Maternity Care</option>
+              <option>Pediatrics</option>
+              <option>Women's Health</option>
+              <option>Menopause Care</option>
+              <option>General Health</option>
+              <option>Mental Wellness</option>
+              <option>Lab &amp; Diagnostics</option>
             </select>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>Date *</label><input type="date" name="date" required></div>
-          <div class="form-group"><label>Time *</label>
-            <select name="time" required>
-              <option value="">Select Time</option>
-              <option>Morning (8AM-12PM)</option><option>Afternoon (12PM-4PM)</option><option>Evening (4PM-9PM)</option>
+          <div class="field"><label for="f-doctor">Preferred Doctor</label>
+            <select id="f-doctor" name="doctor">
+              <option>Any Available</option>
+              <option>Dr. Priya Sharma</option>
+              <option>Dr. Rajesh Kumar</option>
+              <option>Dr. Anjali Nair</option>
+              <option>Dr. Arun Venkatesh</option>
             </select>
           </div>
+          <div class="field"><label for="f-date">Preferred Date <span class="req">*</span></label><input id="f-date" type="date" name="date" required></div>
+          <div class="field"><label for="f-time">Preferred Time <span class="req">*</span></label>
+            <select id="f-time" name="time" required>
+              <option value="">Select time</option>
+              <option>Morning (8AM-12PM)</option>
+              <option>Afternoon (12PM-4PM)</option>
+              <option>Evening (4PM-9PM)</option>
+            </select>
+          </div>
+          <div class="field full"><label for="f-symptoms">Symptoms / Reason for visit</label><textarea id="f-symptoms" name="symptoms" placeholder="Briefly describe what's troubling you"></textarea></div>
         </div>
-        <div class="form-group"><label>Symptoms / Reason</label><textarea name="symptoms" placeholder="Describe symptoms..." rows="3"></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
-          <i class="fas fa-paper-plane"></i> Submit Appointment
-        </button>
+        <button type="submit" class="btn btn-solid">Request Appointment</button>
+        <p class="form-note">We'll call to confirm your slot. Your details stay between you and the clinic.</p>
       </form>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="section-title" data-aos="fade-up">
-    <span class="small">GET IN TOUCH</span>
-    <h2>Contact <span>Alpha Clinic</span></h2>
+
+<!-- ══ Find us + map (sits directly above the footer) ══ -->
+<section class="map-strip" id="find">
+  <div class="shell">
+    <div class="map-head rv">
+      <span class="eyebrow">Find us</span>
+      <h2>Right by Kodambakkam bus stop</h2>
+      <p class="lead" style="margin:18px auto 0">Two minutes on foot from the bus terminus, and a short auto ride from
+        Kodambakkam railway station. Street parking available in front of the clinic.</p>
+    </div>
   </div>
-  <div class="contact-grid">
-    <div class="contact-card" data-aos="fade-up">
-      <div class="icon-img"><img src="https://images.unsplash.com/photo-1577086664693-894d8405334a?w=200" alt=""></div>
-      <h4>📍 Visit Us</h4>
-      <p>Near Kodambakkam Bus Stop,<br>Chennai - 600024</p>
-      <a href="https://maps.google.com/?q=Kodambakkam+Bus+Stop+Chennai" target="_blank">View on Map →</a>
-    </div>
-    <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
-      <div class="icon-img"><img src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=200" alt=""></div>
-      <h4>📞 Call Us</h4>
-      <p>Available 24/7 for emergencies<br>and appointments</p>
-      <a href="tel:9092543740">+91 9092543740</a>
-    </div>
-    <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
-      <div class="icon-img"><img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=200" alt=""></div>
-      <h4>📧 Email Us</h4>
-      <p>Send us your queries<br>and we'll respond quickly</p>
-      <a href="mailto:praveenkumarsankar01@gmail.com">praveenkumarsankar01<br>@gmail.com</a>
-    </div>
-    <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
-      <div class="icon-img"><img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=200" alt=""></div>
-      <h4>🕐 Working Hours</h4>
-      <p>Mon-Sat: 8:00 AM - 9:00 PM<br>Sunday: 9:00 AM - 1:00 PM</p>
-      <a href="https://wa.me/919092543740">Chat on WhatsApp →</a>
+  <iframe
+    title="Alpha Clinic location map — Kodambakkam, Chennai"
+    src="https://www.google.com/maps?q=Kodambakkam%20Bus%20Stop%2C%20Chennai%2C%20Tamil%20Nadu%20600024&z=16&output=embed"
+    loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  <div class="map-bar">
+    <div class="shell">
+      <span class="mb-item"><i class="fas fa-location-dot"></i> Near Kodambakkam Bus Stop, Chennai &ndash; 600024</span>
+      <span class="mb-item"><i class="fas fa-phone"></i> +91 90925 43740</span>
+      <a class="btn btn-light btn-sm" href="https://www.google.com/maps/dir/?api=1&destination=Kodambakkam+Bus+Stop+Chennai+600024" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Get Directions</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <div class="logo" style="margin-bottom:15px;">α Alpha Clinic</div>
-      <p>Premium healthcare for your entire family — combining modern medicine with genuine care, right at the heart of Kodambakkam, Chennai.</p>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="https://wa.me/919092543740"><i class="fab fa-whatsapp"></i></a>
+<!-- ══ Footer ══ -->
+<footer class="ftr">
+  <div class="shell">
+    <div class="ftr-grid">
+      <div class="ftr-about">
+        <div class="brand">
+          <span class="brand-mark">&alpha;</span>
+          <span><span class="brand-name">Alpha Clinic</span><span class="brand-sub">Multi-Speciality &middot; Chennai</span></span>
+        </div>
+        <p>A multi-speciality and dental practice serving families across Kodambakkam and west Chennai since 2008.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/919092543740" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h5>Contact Us</h5>
+        <ul class="ftr-contact">
+          <li><i class="fas fa-location-dot"></i><span>Near Kodambakkam Bus Stop,<br>Chennai &ndash; 600024</span></li>
+          <li><i class="fas fa-phone"></i><a href="tel:+919092543740">+91 90925 43740</a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:praveenkumarsankar01@gmail.com">praveenkumarsankar01@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Business Hours</h5>
+        <ul class="ftr-contact">
+          <li><i class="far fa-clock"></i><span>Mon&ndash;Sat<br>8:00 AM &ndash; 9:00 PM</span></li>
+          <li><i class="far fa-clock"></i><span>Sunday<br>9:00 AM &ndash; 1:00 PM</span></li>
+          <li><i class="fas fa-truck-medical"></i><span>Emergency helpline<br>answered 24 / 7</span></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Explore Our Services</h5>
+        <ul>
+          <li><a href="services/dental-care.html">Dental Care</a></li>
+          <li><a href="services/fertility-care.html">Fertility Care</a></li>
+          <li><a href="services/maternity-care.html">Maternity Care</a></li>
+          <li><a href="services/pediatrics.html">Pediatrics</a></li>
+          <li><a href="services/womens-health.html">Women's Health</a></li>
+          <li><a href="services/menopause-care.html">Menopause Care</a></li>
+          <li><a href="services/general-health.html">General Health</a></li>
+          <li><a href="services/mental-wellness.html">Mental Wellness</a></li>
+          <li><a href="services/lab-diagnostics.html">Lab &amp; Diagnostics</a></li>
+        </ul>
       </div>
     </div>
-    <div class="footer-col"><h4>Quick Links</h4><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#book">Book Now</a></div>
-    <div class="footer-col"><h4>Services</h4><a href="#services">Fertility Care</a><a href="#services">Maternity</a><a href="#services">Pediatrics</a><a href="#services">Diagnostics</a></div>
-    <div class="footer-col">
-      <h4>Contact Info</h4>
-      <a href="tel:9092543740"><i class="fas fa-phone" style="color:var(--accent);"></i> +91 9092543740</a>
-      <a href="mailto:praveenkumarsankar01@gmail.com"><i class="fas fa-envelope" style="color:var(--accent);"></i> praveenkumarsankar01@gmail.com</a>
-      <a href="#"><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i> Kodambakkam, Chennai</a>
+    <div class="ftr-base">
+      <span>&copy; <span id="yr">2026</span> Alpha Clinic, Kodambakkam, Chennai. All rights reserved.</span>
+      <div class="legal"><a href="#">Privacy Policy</a><a href="#">Cancellation Policy</a><a href="#">Terms</a></div>
     </div>
   </div>
-  <div class="footer-bottom">© 2025 Alpha Clinic, Kodambakkam, Chennai. All Rights Reserved.</div>
 </footer>
 
-<a href="https://wa.me/919092543740" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+<!-- ══ Success modal ══ -->
 <div class="modal" id="successModal">
-  <div class="modal-content">
-    <i class="fas fa-check-circle"></i>
-    <h3>Booking Submitted!</h3>
-    <p>Thank you! We'll contact you shortly at the number you provided to confirm your appointment.</p>
-    <button class="btn btn-primary" onclick="document.getElementById('successModal').classList.remove('active')">Close</button>
+  <div class="modal-card">
+    <div class="tick"><i class="fas fa-check"></i></div>
+    <h3>Appointment requested</h3>
+    <p>Thank you. Our front desk will call the number you gave us shortly to confirm your slot.</p>
+    <button class="btn btn-solid" id="modalClose">Close</button>
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="assets/site.js"></script>
+
 <script type="module">
-  // ============================================================
-  //  FIREBASE INITIALIZATION  (modular SDK v10 via ESM CDN)
-  // ============================================================
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+// ════════════════════════════════════════════════════════════
+//  FIREBASE  (modular SDK v10 via ESM CDN) — backend unchanged.
+//  Writes to the `bookings` collection the admin panel listens on,
+//  with the exact same field names the dashboard reads.
+// ════════════════════════════════════════════════════════════
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyARAcmHikC3gAYtYxky-vs4-KMPa2neBM0",
-    authDomain: "clinic-d3fa6.firebaseapp.com",
-    projectId: "clinic-d3fa6",
-    storageBucket: "clinic-d3fa6.firebasestorage.app",
-    messagingSenderId: "886233571323",
-    appId: "1:886233571323:web:b33eb67b3e7e31a968755e",
-    measurementId: "G-YD7F71HJKB"
+const firebaseConfig = {
+  apiKey: "AIzaSyARAcmHikC3gAYtYxky-vs4-KMPa2neBM0",
+  authDomain: "clinic-d3fa6.firebaseapp.com",
+  projectId: "clinic-d3fa6",
+  storageBucket: "clinic-d3fa6.firebasestorage.app",
+  messagingSenderId: "886233571323",
+  appId: "1:886233571323:web:b33eb67b3e7e31a968755e",
+  measurementId: "G-YD7F71HJKB"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+const { modal, dateInput } = window.__alphaUI;
+window.__alphaFirebaseReady = true;   // stands down the WhatsApp fallback
+
+// ── Booking form → Firestore (schema unchanged) ───────────
+document.getElementById('bookingForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const form = this;
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+
+  const formData = new FormData(form);
+  const btn = form.querySelector('button[type="submit"]');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  btn.disabled = true;
+
+  const booking = {
+    id: Date.now(),
+    timestamp: new Date().toLocaleString('en-IN'),
+    name: formData.get('name'),
+    age: formData.get('age'),
+    gender: formData.get('gender'),
+    phone: formData.get('phone'),
+    email: formData.get('email'),
+    service: formData.get('service'),
+    doctor: formData.get('doctor'),
+    date: formData.get('date'),
+    time: formData.get('time'),
+    symptoms: formData.get('symptoms') || '',
+    history: '',
+    status: 'Pending'
   };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  try {
+    // Push to Firebase Firestore — appears in the admin dashboard instantly
+    await addDoc(collection(db, 'bookings'), booking);
 
-  AOS.init({ duration: 1000, once: true });
+    const waMsg = `*🏥 NEW APPOINTMENT - ALPHA CLINIC*%0A%0A` +
+      `*Name:* ${booking.name}%0A*Age:* ${booking.age}%0A` +
+      `*Phone:* ${booking.phone}%0A*Email:* ${booking.email}%0A` +
+      `*Service:* ${booking.service}%0A*Doctor:* ${booking.doctor}%0A` +
+      `*Date:* ${booking.date}%0A*Time:* ${booking.time}%0A` +
+      `*Symptoms:* ${booking.symptoms}`;
 
-  window.addEventListener('load', () => setTimeout(() => document.getElementById('preloader').classList.add('hide'), 500));
-  window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
-
-  const cursorDot = document.getElementById('cursorDot');
-  document.addEventListener('mousemove', (e) => {
-    cursorDot.style.left = e.clientX + 'px';
-    cursorDot.style.top = e.clientY + 'px';
-  });
-  document.addEventListener('mouseleave', () => { cursorDot.style.opacity = '0'; });
-  document.addEventListener('mouseenter', () => { cursorDot.style.opacity = '1'; });
-
-  // Counter animation
-  const counters = document.querySelectorAll('.counter');
-  const animateCounter = (counter) => {
-    const target = +counter.getAttribute('data-target');
-    let count = 0; const inc = target / 100;
-    const update = () => {
-      count += inc;
-      if (count < target) { counter.innerText = Math.ceil(count) + '+'; setTimeout(update, 20); }
-      else counter.innerText = target.toLocaleString() + '+';
-    };
-    update();
-  };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) { animateCounter(entry.target); observer.unobserve(entry.target); } });
-  });
-  counters.forEach(c => observer.observe(c));
-
-  // Booking Form — pushes to Firebase Firestore (admin panel receives in real-time)
-  document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const form = this;
-    const formData = new FormData(form);
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    btn.disabled = true;
-
-    const booking = {
-      id: Date.now(),
-      timestamp: new Date().toLocaleString('en-IN'),
-      name: formData.get('name'),
-      age: formData.get('age'),
-      gender: formData.get('gender'),
-      phone: formData.get('phone'),
-      email: formData.get('email'),
-      service: formData.get('service'),
-      doctor: formData.get('doctor'),
-      date: formData.get('date'),
-      time: formData.get('time'),
-      symptoms: formData.get('symptoms') || '',
-      history: '',
-      status: 'Pending'
-    };
-
-    try {
-      // Push to Firebase Firestore — appears in admin dashboard instantly
-      await addDoc(collection(db, 'bookings'), booking);
-
-      const waMsg = `*🏥 NEW APPOINTMENT - ALPHA CLINIC*%0A%0A` +
-        `*Name:* ${booking.name}%0A*Age:* ${booking.age}%0A` +
-        `*Phone:* ${booking.phone}%0A*Email:* ${booking.email}%0A` +
-        `*Service:* ${booking.service}%0A*Doctor:* ${booking.doctor}%0A` +
-        `*Date:* ${booking.date}%0A*Time:* ${booking.time}%0A` +
-        `*Symptoms:* ${booking.symptoms}`;
-
-      window.open(`https://wa.me/919092543740?text=${waMsg}`, '_blank');
-      document.getElementById('successModal').classList.add('active');
-      form.reset();
-    } catch (err) {
-      console.error('Booking submission error:', err);
-      alert('Sorry, there was an error submitting your booking. Please call us at 9092543740.');
-    } finally {
-      btn.innerHTML = originalText;
-      btn.disabled = false;
-    }
-  });
+    window.open(`https://wa.me/919092543740?text=${waMsg}`, '_blank');
+    modal.classList.add('active');
+    form.reset();
+    dateInput.min = window.__alphaToday();
+  } catch (err) {
+    console.error('Booking submission error:', err);
+    alert('Sorry, there was an error submitting your booking. Please call us at 9092543740.');
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
+});
 </script>
-
 </body>
 </html>
