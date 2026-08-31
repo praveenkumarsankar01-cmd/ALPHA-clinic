@@ -334,7 +334,18 @@ section[id]{scroll-margin-top:96px}
   .svc-go{display:none}
   .team-grid{grid-template-columns:1fr;gap:40px}
   .doc-photo img{height:400px}
-  .ftr-grid{grid-template-columns:1fr;gap:38px}
+  /* Footer keeps two columns on phones rather than collapsing into one
+     long vertical run: the brand and the 9-item service list span the
+     full width, while Contact and Hours sit side by side. */
+  .ftr-grid{grid-template-columns:1fr 1fr;gap:34px 22px}
+  .ftr-about{grid-column:1/-1}
+  .ftr-grid>div:last-child{grid-column:1/-1}
+  .ftr-grid>div:last-child ul:not(.ftr-contact){grid-template-columns:1fr 1fr;gap:13px 18px}
+  .ftr-contact li{gap:10px}
+  .ftr-contact i{width:14px;font-size:.8rem}
+  /* the clinic address and email are long — let them wrap instead of
+     pushing the column past the viewport */
+  .ftr-contact a,.ftr-contact span{overflow-wrap:anywhere}
   .ftr-base{flex-direction:column;gap:12px}
   .modal-card{padding:42px 26px}
 }
