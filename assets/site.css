@@ -308,7 +308,8 @@ section[id]{scroll-margin-top:96px}
   .about-media .a2,.about-media .badge{display:none}
   .about-media .a1{height:340px}
   .trust .shell{grid-template-columns:repeat(2,1fr)}
-  .cond-grid,.steps{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .cond-grid{grid-template-columns:repeat(2,1fr)}
   /* Patient stories read as a swipeable row of framed cards rather than
      one long vertical stack — same rail idiom as .feat-rail. */
   .quotes{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(255px,78vw);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:none}
@@ -316,6 +317,7 @@ section[id]{scroll-margin-top:96px}
   .quote{scroll-snap-align:start;padding:30px 26px}
   .find-info{padding:64px 32px}
   .map-frame{min-height:380px}
+  .about-media .a1{height:auto;aspect-ratio:16/10}
   .utility-right{display:none}
   .utility .shell{justify-content:center}
   .ftr-grid{grid-template-columns:1fr 1fr;gap:40px}
@@ -349,8 +351,27 @@ section[id]{scroll-margin-top:96px}
   .form{padding:32px 24px}
   .svc-row{grid-template-columns:40px 1fr;gap:16px;padding:24px 0}
   .svc-go{display:none}
-  .team-grid{grid-template-columns:1fr;gap:40px}
-  .doc-photo img{height:400px}
+  /* Four consultants stay two across on a phone rather than four
+     full-width portraits; the photos compress to suit the smaller cell. */
+  .team-grid{grid-template-columns:repeat(2,1fr);gap:26px 14px}
+  .doc-photo img{height:190px}
+  .doc-photo{margin-bottom:12px}
+  .doc-photo .status{font-size:.53rem;letter-spacing:1px;padding:5px 9px}
+  .doc h4{font-size:1rem}
+  .doc .role{font-size:.83rem}
+  .doc .qual{font-size:.74rem}
+  /* Symptom cards: two-up, and trimmed so each frame stays shallow. */
+  .cond-grid{gap:12px}
+  .cond{padding:20px 16px}
+  .cond i{font-size:1.2rem;margin-bottom:12px}
+  .cond h4{font-size:.97rem;margin-bottom:7px}
+  .cond p{font-size:.78rem;line-height:1.6;margin-bottom:13px}
+  .cond .more{font-size:.6rem;letter-spacing:1.2px;gap:6px}
+  /* Whole page breathes less on a small screen. */
+  section{padding:52px 0}
+  .sec-head{margin-bottom:34px}
+  .step{padding:28px 22px}
+  .checks{gap:16px}
   /* Footer keeps two columns on phones rather than collapsing into one
      long vertical run: the brand and the 9-item service list span the
      full width, while Contact and Hours sit side by side. */
@@ -550,7 +571,7 @@ a.doc:hover h4{color:var(--green)}
   .doc-stats{grid-template-columns:1fr;gap:1px}
   .why{grid-template-columns:1fr;gap:44px}
   .why-media{order:-1}
-  .why-media img{height:300px}
+  .why-media img{height:auto;aspect-ratio:16/10}
   .vid-wrap video{height:44vh}
   .vid-overlay p{font-size:1.15rem}
   .vid-trust span{padding:4px 16px;font-size:.76rem}
