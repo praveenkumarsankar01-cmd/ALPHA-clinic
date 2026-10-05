@@ -269,23 +269,13 @@
 
   // ── Booking safety net ──────────────────────────────────
   // If the Firebase module never loads (CDN blocked, offline, strict
-  // network), the form must still reach the clinic instead of silently
-  // reloading the page and losing the enquiry.
+  // network), stop the native submit so the page doesn't silently reload
+  // and lose what the visitor typed.
   bookingForm.addEventListener('submit', function (e) {
     if (window.__alphaFirebaseReady) return;      // module owns the submit
     e.preventDefault();
     if (!bookingForm.checkValidity()) { bookingForm.reportValidity(); return; }
-    var f = new FormData(bookingForm);
-    var msg = '*NEW APPOINTMENT - ALPHA CLINIC*%0A%0A' +
-      '*Name:* ' + f.get('name') + '%0A*Age:* ' + f.get('age') + '%0A' +
-      '*Phone:* ' + f.get('phone') + '%0A*Email:* ' + f.get('email') + '%0A' +
-      '*Service:* ' + f.get('service') + '%0A*Doctor:* ' + f.get('doctor') + '%0A' +
-      '*Date:* ' + f.get('date') + '%0A*Time:* ' + f.get('time') + '%0A' +
-      '*Symptoms:* ' + (f.get('symptoms') || '-');
-    window.open('https://wa.me/919092543740?text=' + msg, '_blank');
-    if (modal) modal.classList.add('active');
-    bookingForm.reset();
-    if (dateInput) dateInput.min = todayLocal();
+    alert('Online booking is unavailable right now. Please try again in a moment.');
   });
 
   // Nodes the Firebase module needs.

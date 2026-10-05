@@ -592,3 +592,7 @@ a.doc:hover h4{color:var(--green)}
   .doc-cta .btn{width:100%;justify-content:center}
   .feat-rail{grid-auto-columns:minmax(255px,1fr)}
 }
+
+/* Demo build: contact items are plain text, not links */
+.utility-left span{display:inline-flex;align-items:center;gap:8px}
+.demo-note{font-size:.82rem;color:var(--body);background:var(--bg-soft);border:1px solid var(--line-soft);padding:10px 14px;margin:-6px 0 22px}
